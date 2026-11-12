@@ -1,0 +1,29 @@
+[Unit]
+Description=OsmoDeck core
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=osmodeck
+Group=osmodeck
+ExecStartPre=+/usr/bin/install -d -m 0700 -o osmodeck-agent -g osmodeck-agent /var/cache/osmodeck-agent
+ExecStart=/usr/local/lib/osmodeck/osmodeck
+EnvironmentFile=/etc/osmodeck/core.env
+Environment=OSMODECK_STORAGE_POLICY=/etc/osmodeck/storage.json
+Delegate=yes
+RuntimeDirectory=osmodeck
+RuntimeDirectoryMode=0711
+# The trusted core attaches children to cgroups, then drops all their capabilities.
+AmbientCapabilities=CAP_SETUID CAP_SETGID CAP_DAC_READ_SEARCH CAP_KILL
+CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_DAC_READ_SEARCH CAP_KILL
+NoNewPrivileges=yes
+UMask=0077
+# The inherited 1024 soft limit was exhausted by HTTP/SSE gateway connections.
+LimitNOFILE=524288
+KillMode=control-group
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

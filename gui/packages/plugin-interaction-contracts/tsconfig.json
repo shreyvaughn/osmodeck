@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "@osmodeck/tsconfig/base.json",
+    "@osmodeck/tsconfig/typecheck-overrides.json"
+  ],
+  "compilerOptions": {
+    "rootDir": "."
+  },
+  "include": ["src", "test"]
+}

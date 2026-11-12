@@ -1,0 +1,33 @@
+# Build OsmoDeck from source
+
+You need macOS on Apple Silicon, Git, Node.js 22.19+, pnpm 10.34.9, Python 3.11+, and Xcode Command Line Tools. Building needs no OsmoDeck account.
+
+Run these from this folder:
+
+```sh
+pnpm install --frozen-lockfile
+pnpm exec turbo run build typecheck --filter=@osmodeck/app --filter=@osmodeck/server --filter=@osmodeck/desktop --concurrency=2
+```
+
+SQLite, file watching, and terminals use native modules, so their install scripts must run: `pnpm-workspace.yaml` lists the allowed ones. If your pnpm version differs, use `npx --yes pnpm@10.34.9`.
+
+## Run in dev mode
+
+Start the backend and browser UI, then Electron in a second terminal:
+
+```sh
+pnpm dev
+pnpm exec turbo run dev --filter=@osmodeck/desktop
+```
+
+Dev mode uses its own ports and profile. Local agents need their own installed, signed-in CLIs. To use your own core for Cloud threads, see [connect the desktop app](../core/docs/setup.md#connect-the-desktop-app).
+
+## Checks
+
+```sh
+pnpm exec turbo run test --filter=@osmodeck/scripts --filter=@osmodeck/config --concurrency=2
+```
+
+Desktop integration tests open real apps, so run them only in a test environment. The sync and preview helpers in `apps/server/src/assets/` are copies from the core, so change them there.
+
+The build makes runnable bundles, not a signed installer.

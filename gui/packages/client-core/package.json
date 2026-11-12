@@ -1,0 +1,34 @@
+{
+  "name": "@osmodeck/client-core",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "types": "./src/index.ts",
+  "scripts": {
+    "clean": "rimraf dist tsconfig.tsbuildinfo",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --config vitest.config.ts"
+  },
+  "dependencies": {
+    "@osmodeck/core-ui": "workspace:*",
+    "@osmodeck/desktop-contract": "workspace:*",
+    "@osmodeck/domain": "workspace:*",
+    "@osmodeck/fuzzy-match": "workspace:*",
+    "@osmodeck/server-contract": "workspace:*",
+    "@osmodeck/thread-view": "workspace:*",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@osmodeck/test-helpers": "workspace:*",
+    "@osmodeck/tsconfig": "workspace:*",
+    "@types/node": "^22.0.0",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-7": "npm:typescript@^7.0.2"
+  }
+}

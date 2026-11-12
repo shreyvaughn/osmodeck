@@ -1,0 +1,1 @@
+ALTER TABLE `threads` ADD `saved_at` integer;
