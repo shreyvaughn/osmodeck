@@ -8,6 +8,16 @@ OsmoDeck is a macOS desktop app for running local AI coding agents (Claude Code,
 
 OsmoDeck is not affiliated with or endorsed by the upstream project.
 
+## Install with an AI agent
+
+Paste this into Claude Code, Codex or another coding agent on your Mac:
+
+```text
+Install OsmoDeck from https://github.com/shreyvaughn/osmodeck by following INSTALL.md in that repository. Run each check, stop and tell me if one fails, and ask me before you replace an existing /Applications/OsmoDeck.app.
+```
+
+[INSTALL.md](INSTALL.md) has the step-by-step guide the agent follows, with expected output for each step and fixes for common errors.
+
 ## Quick start (macOS, Apple Silicon)
 
 Requirements: macOS 13+, Git, Node.js 22.19+, pnpm 10.34.9, Python 3.11+, Xcode Command Line Tools. Rust 1.89+ only if you build the core.

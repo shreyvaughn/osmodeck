@@ -4,3 +4,4 @@
 - `gui/`: the desktop app, built on BB. Build and checks: [gui/README.md](gui/README.md).
 - `skills/`: built-in skills the app gives every agent.
 - Keep credentials and internal notes in ignored files. Keep upstream license notices.
+- To install OsmoDeck for a user, follow [INSTALL.md](INSTALL.md).
